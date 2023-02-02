@@ -2,10 +2,10 @@
   "name": "mega-ads-be",
   "version": "0.1.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node index.ts",
-    "start:dev": "tsnd index.ts",
+    "start": "ts-node src/index.ts",
+    "start:dev": "tsnd src/index.ts",
     "build": "tsc",
     "format": "prettier --write \"**/*.{ts,js,json}\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
