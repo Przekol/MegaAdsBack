@@ -16,13 +16,19 @@ export class AdRecord implements AdEntity {
 
   constructor(obj: AdEntity) {
     this.validate(obj);
+    this.name = obj.name;
+    this.description = obj.description;
+    this.price = obj.price;
+    this.url = obj.url;
+    this.lat = obj.lat;
+    this.lon = obj.lon;
   }
 
   private validate(obj: AdEntity) {
     switch (true) {
       case !obj.name || obj.name.length > 100:
         throw new ValidationException('Nazwa ogłoszenia nie może być pusta, ani przekraczać 100 znaków.');
-      case obj.description.length < 1000:
+      case obj.description.length > 1000:
         throw new ValidationException('Treść ogłoszenia nie może przekraczać 1000 znaków.');
       case obj.price < 0 || obj.price > 9999999:
         throw new ValidationException('Cena nie może być mniejsza niż 0 lub większa niż 9 999 999.');
