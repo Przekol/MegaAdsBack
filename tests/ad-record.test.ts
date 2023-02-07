@@ -1,7 +1,6 @@
 import { AdRecord } from '../src/records/ad.record';
 
 const defaultObj = {
-  id: '123',
   name: 'Test Name',
   description: 'Test Description',
   url: 'http://example.com',
