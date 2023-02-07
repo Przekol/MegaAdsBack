@@ -1,6 +1,6 @@
 import { AdEntity, NewAdEntity } from '../../types';
 import { ValidationException } from '../exceptions';
-import { pool } from '../utils/db';
+import { pool } from '../config';
 import { FieldPacket } from 'mysql2';
 
 type AdRecordResults = [AdEntity[], FieldPacket[]];
