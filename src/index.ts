@@ -4,18 +4,14 @@ import express, { json } from 'express';
 import 'express-async-errors';
 import { corsInit, limiter } from './config';
 import { errorMiddleware, notFoundMiddleware } from './middleware';
+import { adRouter } from './routes/ad.router';
 
 const app = express();
 app.use(corsInit);
 app.use(json());
 app.use(limiter);
 
-app.get('/', async (req, res) => {
-  res.json('strona głowna');
-});
-app.get('/user', async (req, res) => {
-  res.json({ user: 'Przemek' });
-});
+app.use('/ad', adRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
