@@ -31,6 +31,14 @@ export class AdRecord implements AdEntity {
     return results.length === 0 ? null : new AdRecord(results[0]);
   }
 
+  static async findAll(name: string): Promise<AdRecord[]> {
+    const [results] = (await pool.execute('SELECT * FROM `ads` WHERE `name` LIKE :search', {
+      search: `%${name}%`,
+    })) as AdRecordResults;
+
+    return results.map((result) => new AdRecord(result));
+  }
+
   private validate(obj: NewAdEntity) {
     switch (true) {
       case !obj.name || obj.name.length > 100:
