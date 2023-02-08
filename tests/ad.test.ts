@@ -1,5 +1,6 @@
 import { AdRecord } from '../src/records/ad.record';
 import { pool } from '../src/config';
+import { AdEntity } from '../types';
 
 afterAll(async () => {
   await pool.end();
@@ -33,5 +34,12 @@ describe('Tests for AdRecord.findAll method', () => {
     const ads = await AdRecord.findAll('----------------------');
 
     expect(ads).toEqual([]);
+  });
+
+  test('AdRecord.findAll returns smaller amount of data.', async () => {
+    const ads = await AdRecord.findAll('');
+
+    expect((ads[0] as AdEntity).price).toBeUndefined();
+    expect((ads[0] as AdEntity).description).toBeUndefined();
   });
 });
