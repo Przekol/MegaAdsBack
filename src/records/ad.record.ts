@@ -1,4 +1,4 @@
-import { AdEntity, NewAdEntity, SimpleAdEntity } from '../../types';
+import { AdEntity, NewAdEntity, SimpleAdEntity } from 'types';
 import { HttpException, ValidationException } from '../exceptions';
 import { pool } from '../config';
 import { FieldPacket } from 'mysql2';
