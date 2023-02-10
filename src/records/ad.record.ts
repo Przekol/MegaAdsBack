@@ -1,4 +1,4 @@
-import { AdEntity, NewAdEntity, SimpleAdEntity } from '../../types';
+import { AdEntity, NewAdEntity, SimpleAdEntity } from 'types';
 import { HttpException, ValidationException } from '../exceptions';
 import { pool } from '../config';
 import { FieldPacket } from 'mysql2';
@@ -33,8 +33,8 @@ export class AdRecord implements AdEntity {
   }
 
   static async findAll(name: string): Promise<SimpleAdEntity[]> {
-    const [results] = (await pool.execute('SELECT * FROM `ads` WHERE `name` LIKE :search', {
-      search: `%${name}%`,
+    const [results] = (await pool.execute("SELECT * FROM `ads` WHERE `name` LIKE CONCAT('%', :name, '%')", {
+      name,
     })) as AdRecordResults;
 
     return results.map((result) => {
